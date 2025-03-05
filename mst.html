@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <link rel="icon" type="image/png" href="marchio.png">
 
@@ -204,20 +204,31 @@
           <div class="accordion-body">
            <p> Puoi trovare la lista dei consultori gestiti dall'Azienda Sanitaria Locale ASLTO3 <a href="https://www.aslto3.piemonte.it/strutture/consultori-familiari/" target="_blank">qui</a> </p> <br>
 
-           <p> Nella mappa puoi trovare i consultori in provincia di Torino, gestiti dalla Regione, dalla Città Metropolitana e dall'ASL TO3</p>
+           <p> Nella mappa puoi trovare i consultori in provincia di Torino, gestiti dalla Regione, dalla Città Metropolitana e dall'ASL TO3</p> <br>
+           <p> Premi <a href="#" onclick="mostroMappa()"> qui</a> per visualizzare la mappa</p>
+           
 
-    <div id="map" style="height: 500px;"></div>
 
       </div>
       </div>
   </div>
 </div>
 
+<div id="map" style="height: 500px; visibility: hidden;"></div>
+
 
 </body>
 
 <script>
         
+function mostroMappa() {
+    var x = document.getElementById("map");
+    if (x.style.visibility === "hidden") {
+        x.style.visibility = "visible";
+    } else {
+        x.style.visibility = "hidden";
+    }
+}
 
   var blueIcon = L.icon({
 iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png', // Icona blu
