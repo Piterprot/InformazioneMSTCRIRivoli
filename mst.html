@@ -193,7 +193,7 @@
 <div class="accordion" id="doveConsulta">
   <div class="accordion-item">
       <h2 class="accordion-header">
-          <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#doveConsultori" aria-expanded="true">
+          <button class="accordion-button collapsed " onclick="VerificoMappa()"  type="button" data-bs-toggle="collapse" data-bs-target="#doveConsultori" aria-expanded="true">
             Dove sono i consultori vicino a me?
           </button>
       </h2>
@@ -225,6 +225,13 @@ function mostroMappa() {
     } else {
         x.style.visibility = "hidden";
     }
+}
+
+function VerificoMappa(){
+  if (document.getElementById("map").style.visibility === "visible") {
+    document.getElementById("map").style.visibility = "hidden";
+    initMap();
+  }
 }
 
   var blueIcon = L.icon({
