@@ -56,11 +56,11 @@
       <div class="accordion" id="ConTO">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTO" aria-expanded="true">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTO" aria-expanded="true">
                     Comune di Torino - Consultori familiari
                 </button>
             </h2>
-            <div id="collapseTO" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapseTO" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                 Puoi trovare la lista dei consultori gestiti dal Comune di Torino <a href="http://www.comune.torino.it/torinogiovani/luoghi/servizi-sanitari/consultori-familiari-a-torino" target="_blank">qui</a>
             </div>
@@ -71,11 +71,11 @@
     <div class="accordion" id="ConReg">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReg" aria-expanded="true">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReg" aria-expanded="true">
                     Consultori Regione Piemonte 
                 </button>
             </h2>
-            <div id="collapseReg" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapseReg" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                 Puoi trovare la lista dei consultori gestiti dalla Regione Piemonte <a href="https://www.regione.piemonte.it/web/sites/default/files/media/documenti/2019-01/elenco_consultori_prov_to.pdf" target="_blank">qui</a>
             </div>
@@ -86,11 +86,11 @@
     <div class="accordion" id="ConASL">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseASL" aria-expanded="true">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseASL" aria-expanded="true">
                     Consultori ASLTO3 
                 </button>
             </h2>
-            <div id="collapseASL" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapseASL" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                 Puoi trovare la lista dei consultori gestiti dall'Azienda Sanitaria Locale ASLTO3 <a href="https://www.aslto3.piemonte.it/strutture/consultori-familiari/" target="_blank">qui</a>
             </div>
@@ -312,6 +312,11 @@ L.marker([45.0779707, 7.6363067], { icon: blueIcon })
 
 L.marker([45.0938805, 7.6523369], { icon: blueIcon })
 .bindPopup('8, Via Alberto Azuni, Lucento, Circoscrizione 5, Torino, Piemonte, 10149, Italia'),
+
+L.marker([45.07306530389681, 7.5881455083987], { icon: blueIcon })
+.bindPopup('Via Torino, Regina Margherita, Borgata Paradiso, Collegno, Torino, Piemonte, 10093, Italia'),
+
+
 ]);
 
 
