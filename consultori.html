@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,34 +35,41 @@
 
       <!--Qui ci andranno le card con i consultori-->
 
-
-      <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ConsultoriComune" aria-expanded="false" aria-controls="collapseWidthExample">
-          Consultori familiari - Comune di Torino
-        </button>
-      </p>
-      <div style="min-height: 120px;">
-        <div class="collapse collapse-horizontal" id="ConsultoriComune">
-          <div class="card card-body" style="width: 300px;">
-            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-          </div>
-        </div>
+      <div>
+        I consultori familiari sono servizi socio-sanitari che offrono assistenza e informazioni sulla sessualità a singoli e coppie, con particolare attenzione alle esigenze delle donne. Operano medici e infermieri qualificati in vari campi, tra cui ginecologia, ostetricia, psicologia e assistenza sociale. Questi servizi includono consulenze su contraccezione, gravidanza, prevenzione e cura delle malattie sessualmente trasmissibili e ginecologiche, nonché supporto per l'interruzione volontaria della gravidanza. Offrono anche consulenze gratuite per giovani e adolescenti, con l'obiettivo di prevenire gravidanze indesiderate e tutelare la salute materna e infantile. L'accesso ai consultori è gratuito, anche se alcuni potrebbero richiedere il pagamento di un ticket. È necessario prenotare un appuntamento e rivolgersi al consultorio della propria zona di residenza o domicilio. A Torino, i giovani tra i 13 e i 21 anni possono rivolgersi al Consultorio Giovani senza impegnativa del medico. Gli indirizzi e gli orari dei consultori sono disponibili sui siti delle ASL locali. Per maggiori informazioni clicca qui
       </div>
-
-
-
-      <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#consultoriASL" aria-expanded="false" aria-controls="collapseWidthExample">
-          Consultori familiari - Comune di Torino
-        </button>
-      </p>
-      <div style="min-height: 120px;">
-        <div class="collapse collapse-horizontal" id="consultoriASL">
-          <div class="card card-body" style="width: 300px;">
-            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-          </div>
+      <div class="accordion" id="ConTO">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                    Comune di Torino - Consultori familiari
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                Puoi trovare la lista dei consultori gestiti dal Comune di Torino <a href="http://www.comune.torino.it/torinogiovani/salute-e-vita-affettiva/consultori-familiari">qui</a>
+            </div>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <div class="accordion" id="ConASL">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                    Consultori Regione Piemonte 
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                 I consultori familiari sono servizi socio-sanitari che offrono assistenza e informazioni sulla sessualità a singoli e coppie, con particolare attenzione alle esigenze delle donne. Operano medici e infermieri qualificati in vari campi, tra cui ginecologia, ostetricia, psicologia e assistenza sociale.
+                    Questi servizi includono consulenze su contraccezione, gravidanza, prevenzione e cura delle malattie sessualmente trasmissibili e ginecologiche, nonché supporto per l'interruzione volontaria della gravidanza. Offrono anche consulenze gratuite per giovani e adolescenti, con l'obiettivo di prevenire gravidanze indesiderate e tutelare la salute materna e infantile.
+                      L'accesso ai consultori è gratuito, anche se alcuni potrebbero richiedere il pagamento di un ticket. È necessario prenotare un appuntamento e rivolgersi al consultorio della propria zona di residenza o domicilio. A Torino, i giovani tra i 13 e i 21 anni possono rivolgersi al Consultorio Giovani senza impegnativa del medico. Gli indirizzi e gli orari dei consultori sono disponibili sui siti delle ASL locali.
+                    Per maggiori informazioni clicca <a href="http://www.comune.torino.it/torinogiovani/salute-e-vita-affettiva/consultori-familiari">qui</a>
+            </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
