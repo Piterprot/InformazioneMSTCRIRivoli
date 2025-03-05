@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
     <link rel="icon" type="image/png" href="marchio.png">
+
     <title>Progetto MST - CRI Rivoli</title>
 </head>
 <body background="background.png">
@@ -172,5 +176,272 @@
 </div>
 
 
+<div class="accordion" id="Consulta">
+  <div class="accordion-item">
+      <h2 class="accordion-header">
+          <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#Consultorio" aria-expanded="true">
+            Cosa sono i consultori?
+          </button>
+      </h2>
+      <div id="Consultorio" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>        I consultori familiari sono servizi socio-sanitari che offrono assistenza e informazioni sulla sessualità a singoli e coppie, con particolare attenzione alle esigenze delle donne. Operano medici e infermieri qualificati in vari campi, tra cui ginecologia, ostetricia, psicologia e assistenza sociale. Questi servizi includono consulenze su contraccezione, gravidanza, prevenzione e cura delle malattie sessualmente trasmissibili e ginecologiche, nonché supporto per l'interruzione volontaria della gravidanza. Offrono anche consulenze gratuite per giovani e adolescenti, con l'obiettivo di prevenire gravidanze indesiderate e tutelare la salute materna e infantile. L'accesso ai consultori è gratuito, anche se alcuni potrebbero richiedere il pagamento di un ticket. È necessario prenotare un appuntamento e rivolgersi al consultorio della propria zona di residenza o domicilio. A Torino, i giovani tra i 13 e i 21 anni possono rivolgersi al Consultorio Giovani senza impegnativa del medico.
+            </p>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="accordion" id="doveConsulta">
+  <div class="accordion-item">
+      <h2 class="accordion-header">
+          <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#doveConsultori" aria-expanded="true">
+            Dove sono i consultori vicino a me?
+          </button>
+      </h2>
+      <div id="doveConsultori" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+           <p> Puoi trovare la lista dei consultori gestiti dall'Azienda Sanitaria Locale ASLTO3 <a href="https://www.aslto3.piemonte.it/strutture/consultori-familiari/" target="_blank">qui</a> </p> <br>
+
+           <p> Nella mappa puoi trovare i consultori in provincia di Torino, gestiti dalla Regione, dalla Città Metropolitana e dall'ASL TO3</p>
+
+    <div id="map" style="height: 500px;"></div>
+
+      </div>
+      </div>
+  </div>
+</div>
+
+
 </body>
+
+<script>
+        
+
+  var blueIcon = L.icon({
+iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png', // Icona blu
+iconSize: [32, 32],
+iconAnchor: [16, 32],
+popupAnchor: [0, -32]
+});
+
+var greenIcon = L.icon({
+iconUrl: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png', // Icona verde
+iconSize: [32, 32],
+iconAnchor: [16, 32],
+popupAnchor: [0, -32]
+});
+
+// Inizializza la mappa e imposta il centro e lo zoom
+var map = L.map('map').setView([45.0624, 7.57827], 13); // Collegno
+
+// Aggiungi il layer di OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+var gruppoASL = L.layerGroup().addTo(map);
+var consultoriLayerGroup = L.layerGroup([
+
+L.marker([45.07306530389681, 7.5881455083987], { icon: blueIcon })
+.bindPopup('Via Torino, Regina Margherita, Borgata Paradiso, Collegno, Torino, Piemonte, 10093, Italia'),
+
+L.marker([45.07021003232446, 7.53438370467995], { icon: blueIcon })
+.bindPopup('Via Dora Riparia, Cascine Vica, Rivoli, Torino, Piemonte, 10098, Italia'),
+
+L.marker([45.0955934, 7.5221948], { icon: blueIcon })
+.bindPopup('2, Via Philips, Alpignano, Torino, Piemonte, 10091, Italia'),
+
+L.marker([45.1188683, 7.613621265771146], { icon: blueIcon })
+.bindPopup('Polo Sanitario di Venaria, 152, Via Don Sapino, Venaria Reale, Torino, Piemonte, 10078, Italia'),
+
+L.marker([44.99908772582185, 7.59200205683207], { icon: blueIcon })
+.bindPopup('Via Orbassano, Borgaretto, Beinasco, Torino, Piemonte, 10092, Italia'),
+
+L.marker([44.988302880731176, 7.462166541250185], { icon: blueIcon })
+.bindPopup('Via Trento, Piossasco, Torino, Piemonte, 10045, Italia'),
+
+L.marker([45.04520265, 6.84744065], { icon: blueIcon })
+.bindPopup('Corso Torino, Gad, Oulx, Torino, Piemonte, 10056, Italia'),
+
+L.marker([45.137460950000005, 7.050802320041202], { icon: blueIcon })
+.bindPopup('Ospedale di Susa, 66, Corso Inghilterra, Borgo dei Nobili, Balma di Grosso, Susa, Torino, Piemonte, 10059, Italia'),
+
+L.marker([44.916998986665284, 7.482174123001102], { icon: blueIcon })
+.bindPopup('Via Roma, Airasca, Torino, Piemonte, Italia'),
+
+L.marker([44.78518566410096, 7.3748026733166085], { icon: blueIcon })
+.bindPopup('Via Roma, Abbazia di Santa Maria, Cavour, Torino, Piemonte, 10061, Italia'),
+
+L.marker([44.9838108, 7.3745163], { icon: blueIcon })
+.bindPopup('10, Via Domenico Berti, Cumiana, Torino, Piemonte, 10040, Italia'),
+
+L.marker([44.9564888, 7.1825635], { icon: blueIcon })
+.bindPopup('Presidio Sanitario di Pomaretto, 2, Via Maggiore Ribet, Girp, Pomaretto, Torino, Piemonte, 10063, Italia'),
+
+L.marker([44.8195412, 7.205427361922586], { icon: blueIcon })
+.bindPopup('Ospedale Valdese, 34, Via Matteo Gay, Santa Margherita, Torre Pellice, Torino, Piemonte, 10066, Italia'),
+
+L.marker([44.99908772582185, 7.59200205683207], { icon: blueIcon })
+.bindPopup('Via Orbassano, Borgaretto, Beinasco, Torino, Piemonte, 10092, Italia'),
+
+L.marker([44.825593, 7.3022149], { icon: blueIcon })
+.bindPopup('3, Via Assietta, Pedaggio, Bricherasio, Torino, Piemonte, 10060, Italia'),
+
+L.marker([45.0711394, 7.574916399999999], { icon: blueIcon })
+.bindPopup('Via antica di Grugliasco, Regina Margherita, Leumann, Collegno, Torino, Piemonte, 10093, Italia'),
+
+L.marker([45.1376315, 7.0527719], { icon: blueIcon })
+.bindPopup('5, Via John Barraclough Fell, Borgo Nuovo, Cascina Ronchail, Susa, Torino, Piemonte, 10059, Italia'),
+
+L.marker([44.78384105241783, 7.507528662336145], { icon: blueIcon })
+.bindPopup('Via San Sebastiano, Villafranca Piemonte, Torino, Piemonte, 12033, Italia'),
+
+L.marker([44.88553997332033, 7.319749843824665], { icon: blueIcon })
+.bindPopup('Stradale Fenestrelle, Abbadia Alpina, Pinerolo, Torino, Piemonte, 10064, Italia'),
+
+L.marker([45.04247785, 7.35495935], { icon: blueIcon })
+.bindPopup('Via Seminario, Giaveno, Torino, Piemonte, 10094, Italia'),
+
+L.marker([44.9564888, 7.1825635], { icon: blueIcon })
+.bindPopup('Presidio Sanitario di Pomaretto, 2, Via Maggiore Ribet, Girp, Pomaretto, Torino, Piemonte, 10063, Italia'),
+
+L.marker([44.8195412, 7.205427361922586], { icon: blueIcon })
+.bindPopup('Ospedale Valdese, 34, Via Matteo Gay, Santa Margherita, Torre Pellice, Torino, Piemonte, 10066, Italia'),
+
+
+L.marker([44.916998986665284, 7.482174123001102], { icon: blueIcon })
+.bindPopup('Via Roma, Airasca, Torino, Piemonte, Italia'),
+
+L.marker([45.07354970811222, 7.385486379805378], { icon: blueIcon })
+.bindPopup('Via Monte Pirchiriano, Avigliana, Torino, Piemonte, 10051, Italia'),
+
+L.marker([45.13903485219776, 7.144297427000544], { icon: blueIcon })
+.bindPopup('Via Traforo, Bussoleno, Torino, Piemonte, 10053, Italia'),
+
+L.marker([44.78518566410096, 7.3748026733166085], { icon: blueIcon })
+.bindPopup('Via Roma, Abbazia di Santa Maria, Cavour, Torino, Piemonte, 10061, Italia'),
+
+L.marker([45.115050463658946, 7.309078439117396], { icon: blueIcon })
+.bindPopup('Piazza Vittorio Veneto, Condove, Torino, Piemonte, 10055, Italia'),
+
+
+L.marker([44.9838108, 7.3745163], { icon: blueIcon })
+.bindPopup('10, Via Domenico Berti, Cumiana, Torino, Piemonte, 10040, Italia'),
+
+L.marker([45.0955934, 7.5221948], { icon: blueIcon })
+.bindPopup('2, Via Philips, Alpignano, Torino, Piemonte, 10091, Italia'),
+
+L.marker([45.063176691894036, 7.575579065563785], { icon: blueIcon })
+.bindPopup('Via Tiziano Lanza, Grugliasco, Torino, Piemonte, 10095, Italia'),
+
+L.marker([45.09964708802923, 7.546543040354414], { icon: blueIcon })
+.bindPopup('Via Quattro Novembre, Pianezza, Torino, Piemonte, 10044, Italia'),
+
+L.marker([45.07306530389681, 7.5881455083987], { icon: blueIcon })
+.bindPopup('Via Torino, Regina Margherita, Borgata Paradiso, Collegno, Torino, Piemonte, 10093, Italia'),
+
+L.marker([45.007708878215354, 7.545178870399341], { icon: blueIcon })
+.bindPopup('Piazza Generale Carlo Alberto Dalla Chiesa, Orbassano, Torino, Piemonte, 10043, Italia'),
+
+L.marker([45.01116703362898, 7.530409276071338], { icon: blueIcon })
+.bindPopup('Strada Rivalta, Orbassano, Torino, Piemonte, 10043, Italia'),
+
+L.marker([45.04520265, 6.84744065], { icon: blueIcon })
+.bindPopup('Corso Torino, Gad, Oulx, Torino, Piemonte, 10056, Italia'),
+
+L.marker([44.99195333503442, 7.48960370821215], { icon: blueIcon })
+.bindPopup('Via Torino, Garola, Piossasco, Torino, Piemonte, 10045, Italia'),
+
+L.marker([45.03101859743057, 7.52452339350185], { icon: blueIcon })
+.bindPopup('Via Can Candido Balma, Rivalta di Torino, Torino, Piemonte, 10043, Italia'),
+
+L.marker([44.8438752, 7.4934226], { icon: blueIcon })
+.bindPopup('8, Via Luisia, Vigone, Torino, Piemonte, 10067, Italia'),
+
+
+L.marker([44.95323729454486, 7.512108197248399], { icon: blueIcon })
+.bindPopup('Via Vincenzo Ponsati, Cascina San Rocco, Volvera, Torino, Piemonte, Italia'),
+
+L.marker([45.197292654338966, 7.8827245494518055], { icon: blueIcon })
+.bindPopup('Via Blatta, Chivasso, Torino, Piemonte, 10034, Italia'),
+
+
+
+L.marker([45.452994501368394, 7.880247998034195], { icon: blueIcon })
+.bindPopup('Via Piero Gobetti, Cantone Vigna, Borghetto, Ivrea, Torino, Piemonte, 10015, Italia'),
+
+L.marker([45.45867585266161, 7.859980662146069], { icon: blueIcon })
+.bindPopup('Via Samone, Banchette, Torino, Piemonte, 10010, Italia'),
+
+L.marker([45.17751715, 7.8408490602349445], { icon: blueIcon })
+.bindPopup('Piazza Carlo Tempia, Brandizzo, Torino, Piemonte, Italia'),
+
+L.marker([45.23388813353507, 7.595610216491239], { icon: blueIcon })
+.bindPopup('Via Giuseppe Mazzini, Località Battitore, Ciriè, Torino, Piemonte, 10073, Italia'),
+
+L.marker([45.19049912003864, 8.104538253099209], { icon: blueIcon })
+.bindPopup('Via Bolongara, Crescentino, Vercelli, Piemonte, 13044, Italia'),
+
+L.marker([45.1269659, 7.82830055], { icon: blueIcon })
+.bindPopup('Guardia Medica - Gassino T.se, 22, Via Foratella, Gassino Torinese, Torino, Piemonte, 10090, Italia'),
+
+L.marker([45.2743542, 7.4830252], { icon: blueIcon })
+.bindPopup('2, Via Bocciarelli, Oviglia, Lanzo Torinese, Unione Montana di Comuni delle Valli di Lanzo, Ceronda e Casternone, Torino, Piemonte, 10074, Italia'),
+
+L.marker([45.18491649068909, 7.718635484617516], { icon: blueIcon })
+.bindPopup('Via Volpiano, Leini, Torino, Piemonte, 10079, Italia'),
+
+L.marker([45.32877455476579, 7.724600944519763], { icon: blueIcon })
+.bindPopup('Via Piave, Pasquaro, Rivarolo Canavese, Torino, Piemonte, 10086, Italia'),
+
+L.marker([45.10490014563794, 7.751646871065696], { icon: blueIcon })
+.bindPopup('Via Speranza, Oltrepo, San Mauro Torinese, Torino, Piemonte, 10099, Italia'),
+
+L.marker([45.0156186, 7.6307182], { icon: blueIcon })
+.bindPopup('25, Via Arturo Farinelli, Borgata Mirafiori, Circoscrizione 2, Torino, Piemonte, 10135, Italia'),
+
+L.marker([45.0280686, 7.6502669], { icon: blueIcon })
+.bindPopup('55, Corso Corsica, Lingotto, Circoscrizione 8, Torino, Piemonte, 10135, Italia'),
+
+L.marker([45.0646287, 7.6347418], { icon: blueIcon })
+.bindPopup('130, Via Monginevro, Rione Lancia, Circoscrizione 3, Torino, Piemonte, 10141, Italia'),
+
+L.marker([45.056992, 7.6847442], { icon: blueIcon })
+.bindPopup('28, Via Silvio Pellico, San Salvario, Circoscrizione 8, Torino, Piemonte, 10125, Italia'),
+
+L.marker([45.0389394, 7.6264038], { icon: blueIcon })
+.bindPopup('1, Via Giorgio Bellono, Mirafiori Nord, Circoscrizione 2, Torino, Piemonte, 10137, Italia'),
+
+L.marker([45.0934401, 7.6953882], { icon: blueIcon })
+.bindPopup('60, Via Montanaro, Barriera di Milano, Circoscrizione 6, Torino, Piemonte, 10154, Italia'),
+
+L.marker([45.1014714, 7.6717827], { icon: blueIcon })
+.bindPopup('152, Via Michele Coppino, Madonna di Campagna, Circoscrizione 5, Torino, Piemonte, 10147, Italia'),
+
+L.marker([45.0779707, 7.6363067], { icon: blueIcon })
+.bindPopup('4, Via Giacinto Pacchiotti, Parella, Circoscrizione 4, Torino, Piemonte, 10146, Italia'),
+
+L.marker([45.0938805, 7.6523369], { icon: blueIcon })
+.bindPopup('8, Via Alberto Azuni, Lucento, Circoscrizione 5, Torino, Piemonte, 10149, Italia'),
+
+L.marker([45.07306530389681, 7.5881455083987], { icon: blueIcon })
+.bindPopup('Via Torino, Regina Margherita, Borgata Paradiso, Collegno, Torino, Piemonte, 10093, Italia'),
+
+
+]);
+
+
+
+// Add the LayerGroup to the map
+consultoriLayerGroup.addTo(map);
+
+
+// Add layer control to the map
+L.control.layers(null, overlayMaps).addTo(map);
+
+
+</script>
+
 </html>
