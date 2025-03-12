@@ -175,13 +175,20 @@
     margin-top: 13px;
     font-weight: bold;
   }
+
+  body{
+    -ms-content-zooming: none; 
+    touch-action: manipulation;
+  }
 </style>
 
 
 <script>
 
- // alert("Questo link verrà dismesso a breve! Ti inviamo ad utilizzare mst.cririvoli.it per avere sempre accesso a tutte le informazioni!")
-
+ alert("Questo link verrà dismesso a breve! Ti inviamo ad utilizzare mst.cririvoli.it per avere sempre accesso a tutte le informazioni!")
+ document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
 
   </script>
 </html>
